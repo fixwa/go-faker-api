@@ -14,7 +14,8 @@ var (
 )
 
 func ConnectDatabase() {
-	uri := "mongodb://root:root@localhost:27017"
+	uri := "mongodb+srv://superbisor:MH3GuRIb096HdRzv@cluster0.zjyay.mongodb.net/fakerAPI?retryWrites=true&w=majority"
+	//uri := "mongodb://root:root@localhost:27017"
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 
 	if err != nil {
@@ -28,6 +29,6 @@ func ConnectDatabase() {
 		panic(err)
 	}
 
-	db = client.Database("fakered")
+	db = client.Database("fakerAPI")
 	fmt.Println("Successfuly connected to the database.")
 }
