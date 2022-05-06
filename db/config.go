@@ -14,6 +14,7 @@ var (
 	db               *mongo.Database
 	MONGODB_USER     = "root"
 	MONGODB_PASSWORD = "root"
+	MONGODB_HOST     = "localhost:27017"
 )
 
 func ConnectDatabase() {
@@ -25,7 +26,11 @@ func ConnectDatabase() {
 		MONGODB_PASSWORD = envMongoDbPassword
 	}
 
-	uri := "mongodb+srv://" + MONGODB_USER + ":" + MONGODB_PASSWORD + "@cluster0.zjyay.mongodb.net/fakerAPI?retryWrites=true&w=majority"
+	if envMongoDbHost := os.Getenv("MONGODB_HOST"); envMongoDbHost != "" {
+		MONGODB_HOST = envMongoDbHost
+	}
+
+	uri := "mongodb+srv://" + MONGODB_USER + ":" + MONGODB_PASSWORD + "@" + MONGODB_HOST + "/fakerAPI?retryWrites=true&w=majority"
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 
 	if err != nil {
