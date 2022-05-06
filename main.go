@@ -5,6 +5,7 @@ import (
 	"github.com/fixwa/go-faker-api/db"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"os"
 )
 
 var (
@@ -30,5 +31,10 @@ func main() {
 
 	engine.POST(ApiVersion+"/persons/create", controllers.CreatePerson)
 	engine.GET(ApiVersion+"/persons/list", controllers.ListPersons)
-	engine.Run(":8080")
+
+	port := "8080"
+	if envPort := os.Getenv("PORT"); envPort != "" {
+		port = envPort
+	}
+	engine.Run(":" + port)
 }
