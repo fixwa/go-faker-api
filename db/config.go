@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"fmt"
+	"os"
 	"time"
 
 	"go.mongodb.org/mongo-driver/mongo"
@@ -10,12 +11,21 @@ import (
 )
 
 var (
-	db *mongo.Database
+	db               *mongo.Database
+	MONGODB_USER     = "root"
+	MONGODB_PASSWORD = "root"
 )
 
 func ConnectDatabase() {
-	uri := "mongodb+srv://superbisor:MH3GuRIb096HdRzv@cluster0.zjyay.mongodb.net/fakerAPI?retryWrites=true&w=majority"
-	//uri := "mongodb://root:root@localhost:27017"
+	if envMongoDbUser := os.Getenv("MONGODB_USER"); envMongoDbUser != "" {
+		MONGODB_USER = envMongoDbUser
+	}
+
+	if envMongoDbPassword := os.Getenv("MONGODB_PASSWORD"); envMongoDbPassword != "" {
+		MONGODB_PASSWORD = envMongoDbPassword
+	}
+
+	uri := "mongodb+srv://" + MONGODB_USER + ":" + MONGODB_PASSWORD + "@cluster0.zjyay.mongodb.net/fakerAPI?retryWrites=true&w=majority"
 	client, err := mongo.NewClient(options.Client().ApplyURI(uri))
 
 	if err != nil {
