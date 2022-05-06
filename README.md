@@ -1,4 +1,3 @@
-![Website](https://img.shields.io/website?style=plastic&url=https%3A%2F%2Ffeik.herokuapp.com%2Fv1%2Fhealthcheck)
 
 ### https://feik.herokuapp.com/v1/about
 
