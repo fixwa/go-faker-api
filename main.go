@@ -29,7 +29,7 @@ func main() {
 	engine.POST(ApiVersion+"/users/create", controllers.CreateUser)
 	engine.GET(ApiVersion+"/users/list", controllers.ListUsers)
 	engine.GET(ApiVersion+"/users/find", controllers.FindUser)
-	engine.GET(ApiVersion+"users/delete", controllers.DeleteUser)
+	engine.GET(ApiVersion+"/users/delete", controllers.DeleteUser)
 	engine.GET(ApiVersion+"/users/update", controllers.UpdateUser)
 	engine.GET(ApiVersion+"/users/fake", controllers.GenerateFakeUser)
 

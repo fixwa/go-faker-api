@@ -10,47 +10,47 @@ import (
 )
 
 type FakeStruct struct {
-	Latitude         float32 `json:"latitude" bson:"latitude,omitempty"  faker:"lat"`
-	Longitude        float32 `faker:"long"`
-	CreditCardNumber string  `faker:"cc_number"`
-	CreditCardType   string  `faker:"cc_type"`
+	Latitude         float32 `json:"latitude" bson:"latitude,omitempty" faker:"lat"`
+	Longitude        float32 `json:"longitude" faker:"long"`
+	CreditCardNumber string  `json:"creditCardNumber" faker:"cc_number"`
+	CreditCardType   string  `json:"creditCardType" faker:"cc_type"`
 	Email            string  `json:"email"  bson:"email,omitempty"  faker:"email"`
-	IPV4             string  `faker:"ipv4"`
-	IPV6             string  `faker:"ipv6"`
-	Password         string  `faker:"password"`
-	PhoneNumber      string  `faker:"phone_number"`
-	MacAddress       string  `faker:"mac_address"`
-	URL              string  `faker:"url"`
-	UserName         string  `faker:"username"`
+	IPV4             string  `json:"IPV4" faker:"ipv4"`
+	IPV6             string  `json:"IPV6" faker:"ipv6"`
+	Password         string  `json:"password" faker:"password"`
+	PhoneNumber      string  `json:"phoneNumber" faker:"phone_number"`
+	MacAddress       string  `json:"macAddress" faker:"mac_address"`
+	URL              string  `json:"url" faker:"url"`
+	UserName         string  `json:"userName" faker:"username"`
 	//ToolFreeNumber   string  `faker:"tool_free_number"` // @fixme
-	E164PhoneNumber    string             `faker:"e_164_phone_number"`
-	TitleMale          string             `faker:"title_male"`
-	TitleFemale        string             `faker:"title_female"`
-	FirstName          string             `faker:"first_name"`
-	FirstNameMale      string             `faker:"first_name_male"`
-	FirstNameFemale    string             `faker:"first_name_female"`
-	LastName           string             `faker:"last_name"`
-	Name               string             `faker:"name"`
-	UnixTime           int64              `faker:"unix_time"`
-	Date               string             `faker:"date"`
-	Time               string             `faker:"time"`
-	MonthName          string             `faker:"month_name"`
-	Year               string             `faker:"year"`
-	DayOfWeek          string             `faker:"day_of_week"`
-	DayOfMonth         string             `faker:"day_of_month"`
-	Timestamp          string             `faker:"timestamp"`
-	Century            string             `faker:"century"`
-	TimeZone           string             `faker:"timezone"`
-	TimePeriod         string             `faker:"time_period"`
-	Word               string             `faker:"word"`
-	Sentence           string             `faker:"sentence"`
-	Paragraph          string             `faker:"paragraph"`
-	Currency           string             `faker:"currency"`
-	Amount             float64            `faker:"amount"`
-	AmountWithCurrency string             `faker:"amount_with_currency"`
-	UUIDHypenated      string             `faker:"uuid_hyphenated"`
-	UUID               string             `faker:"uuid_digit"`
-	ID                 primitive.ObjectID `json:"id" bson:"_id,omitempty" faker:"customIdFaker"`
+	E164PhoneNumber    string             `json:"e164PhoneNumber" faker:"e_164_phone_number"`
+	TitleMale          string             `json:"titleMale" faker:"title_male"`
+	TitleFemale        string             `json:"titleFemale" faker:"title_female"`
+	FirstName          string             `json:"firstName" faker:"first_name"`
+	FirstNameMale      string             `json:"firstNameMale" faker:"first_name_male"`
+	FirstNameFemale    string             `json:"firstNameFemale" faker:"first_name_female"`
+	LastName           string             `json:"lastName" faker:"last_name"`
+	Name               string             `json:"name" faker:"name"`
+	UnixTime           int64              `json:"unixTime" faker:"unix_time"`
+	Date               string             `json:"date" faker:"date"`
+	Time               string             `json:"time" faker:"time"`
+	MonthName          string             `json:"monthName" faker:"month_name"`
+	Year               string             `json:"year" faker:"year"`
+	DayOfWeek          string             `json:"dayOfWeek" faker:"day_of_week"`
+	DayOfMonth         string             `json:"dayOfMonth" faker:"day_of_month"`
+	Timestamp          string             `json:"timestamp" faker:"timestamp"`
+	Century            string             `json:"century" faker:"century"`
+	TimeZone           string             `json:"timeZone" faker:"timezone"`
+	TimePeriod         string             `json:"timePeriod" faker:"time_period"`
+	Word               string             `json:"word" faker:"word"`
+	Sentence           string             `json:"sentence" faker:"sentence"`
+	Paragraph          string             `json:"paragraph" faker:"paragraph"`
+	Currency           string             `json:"currency" faker:"currency"`
+	Amount             float64            `json:"amount" faker:"amount"`
+	AmountWithCurrency string             `json:"amountWithCurrency" faker:"amount_with_currency"`
+	UUIDHypenated      string             `json:"uuidHypenated" faker:"uuid_hyphenated"`
+	UUID               string             `json:"uuid" faker:"uuid_digit"`
+	ID                 primitive.ObjectID `json:"id" json:"id" bson:"_id,omitempty" faker:"customIdFaker"`
 }
 
 func GenerateAllFaked(c *gin.Context) {
