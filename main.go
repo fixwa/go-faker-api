@@ -29,9 +29,11 @@ func main() {
 	engine.GET(ApiVersion+"/users/find", controllers.FindUser)
 	engine.GET(ApiVersion+"users/delete", controllers.DeleteUser)
 	engine.GET(ApiVersion+"/users/update", controllers.UpdateUser)
+	engine.GET(ApiVersion+"/users/fake", controllers.GenerateFakeUser)
 
 	engine.POST(ApiVersion+"/persons/create", controllers.CreatePerson)
 	engine.GET(ApiVersion+"/persons/list", controllers.ListPersons)
+	engine.GET(ApiVersion+"/persons/fake", controllers.GenerateFakePerson)
 
 	if envPort := os.Getenv("PORT"); envPort != "" {
 		defaultPort = envPort

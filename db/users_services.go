@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"github.com/bxcodec/faker/v3"
 	"github.com/fixwa/go-faker-api/common"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -35,7 +36,7 @@ func ListUsers() (*[]User, *common.RestErr) {
 	}
 
 	var results []User
-	
+
 	if err = cur.All(ctx, &results); err != nil {
 		restErr := common.NotFound("Users not found.")
 		return nil, restErr
@@ -53,6 +54,12 @@ func FindUser(email string) (*User, *common.RestErr) {
 		return nil, restErr
 	}
 	return &user, nil
+}
+
+func GenerateFakeUser() User {
+	var user User
+	faker.FakeData(&user)
+	return user
 }
 
 func DeleteUser(email string) *common.RestErr {

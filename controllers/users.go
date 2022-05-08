@@ -3,6 +3,7 @@ package controllers
 import (
 	"github.com/fixwa/go-faker-api/common"
 	"github.com/fixwa/go-faker-api/db"
+	"github.com/fixwa/go-faker-api/fakery"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -86,4 +87,10 @@ func UpdateUser(c *gin.Context) {
 		return
 	}
 	c.JSON(http.StatusOK, user)
+}
+
+func GenerateFakeUser(c *gin.Context) {
+	fakery.Generator()
+	u := db.GenerateFakeUser()
+	c.JSON(http.StatusOK, u)
 }

@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"github.com/bxcodec/faker/v3"
 	"github.com/fixwa/go-faker-api/common"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -40,4 +41,10 @@ func ListPersons() (*[]Person, *common.RestErr) {
 		return nil, restErr
 	}
 	return &results, nil
+}
+
+func GenerateFakePerson() Person {
+	var person Person
+	faker.FakeData(&person)
+	return person
 }
