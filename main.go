@@ -24,6 +24,8 @@ func main() {
 		})
 	})
 
+	engine.GET(ApiVersion+"/fake", controllers.GenerateAllFaked)
+
 	engine.POST(ApiVersion+"/users/create", controllers.CreateUser)
 	engine.GET(ApiVersion+"/users/list", controllers.ListUsers)
 	engine.GET(ApiVersion+"/users/find", controllers.FindUser)

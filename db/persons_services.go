@@ -4,6 +4,7 @@ import (
 	"context"
 	"github.com/bxcodec/faker/v3"
 	"github.com/fixwa/go-faker-api/common"
+	"github.com/fixwa/go-faker-api/fakery"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"time"
@@ -45,6 +46,7 @@ func ListPersons() (*[]Person, *common.RestErr) {
 
 func GenerateFakePerson() Person {
 	var person Person
+	fakery.Generator()
 	faker.FakeData(&person)
 	return person
 }
