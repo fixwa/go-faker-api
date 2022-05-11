@@ -1,5 +1,5 @@
 
-### https://feik.herokuapp.com/v1/about
+### https://feik.herokuapp.com/v1/healthcheck
 
 # A "fake-data" rest api based for free usage
 
