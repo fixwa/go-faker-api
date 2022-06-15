@@ -16,8 +16,17 @@ var (
 )
 
 func main() {
-	engine := gin.Default()
 	db.ConnectDatabase()
+	engine := gin.Default()
+
+	engine.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 
 	engine.GET(ApiVersion+"/healthcheck", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -42,15 +51,6 @@ func main() {
 	if envPort := os.Getenv("PORT"); envPort != "" {
 		defaultPort = envPort
 	}
-
-	engine.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET", "POST"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
-	}))
 
 	engine.Run(":" + defaultPort)
 }
