@@ -3,9 +3,11 @@ package main
 import (
 	"github.com/fixwa/go-faker-api/controllers"
 	"github.com/fixwa/go-faker-api/db"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"os"
+	"time"
 )
 
 var (
@@ -40,5 +42,15 @@ func main() {
 	if envPort := os.Getenv("PORT"); envPort != "" {
 		defaultPort = envPort
 	}
+
+	engine.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"},
+		AllowMethods:     []string{"GET", "POST"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
+
 	engine.Run(":" + defaultPort)
 }
